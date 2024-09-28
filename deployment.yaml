@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: hellothere-flask
+ labels:
+   app: hellothere-flask
+spec:
+ replicas: 1
+ selector:
+   matchLabels:
+     app: hellothere-flask
+ template:
+   metadata:
+     labels:
+       app: hellothere-flask
+   spec:
+     containers:
+     - name: flask
+       image: public.ecr.aws/sctp-sandbox/alanp_flask_image:latest
+       ports:
+       - containerPort: 8000
