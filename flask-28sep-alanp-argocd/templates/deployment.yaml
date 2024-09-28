@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: 28sep-alanp-argocd-flask
+ labels:
+   app: 28sep-alanp-argocd-flask
+spec:
+ replicas: 1
+ selector:
+   matchLabels:
+     app: 28sep-alanp-argocd-flask
+ template:
+   metadata:
+     labels:
+       app: 28sep-alanp-argocd-flask
+   spec:
+     containers:
+     - name: flask
+       image: public.ecr.aws/sctp-sandbox/alanp_flask_image:latest
+       ports:
+       - containerPort: 8000
+---
